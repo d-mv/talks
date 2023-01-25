@@ -70,7 +70,7 @@
       display: none;
     }
   </style>
-  <title>Let's Talk About State</title>
+  <title>React Hooks</title>
 </head>
 
 <body>
@@ -78,551 +78,470 @@
     <div class="slides">
       <section>
         <div class="title">
-          <div class="title-header">
-            <h2 id="title">Let's Talk About <span class="fw-400" id="state">State</span></h2>
-            <span id="line-1" class="line animate__animated"></span>
+          <div class='title-header'>
+            <span id="conversation" class='title-header-conversation' style="display:none;">Conversation</span>
+            <h2>React Hooks <span id='talk'>Talk<span></h2>
           </div>
-          </br>
-          <h5 class="white">What types of state are available? Use cases and pros/cons</h5>
+          <h5 class="white">What, why, how and how <em>"not
+              to"</em></h5>
           <div class="details">
-            <p class="p2 date">January 24, 2022</p>
+            <p class="p2 date">January 3, 2022</p>
             <p class="p2 author">by Dmitry Melnikov</p>
           </div>
-          <div class="one-four code">
-            <a target="_blank" href="http://localhost:8888?print-pdf">print version</a>
-          </div>
+            <div class='one-two'>
+              <a target="_blank"
+                href="http://localhost:8888?print-pdf">print
+                version</a>
+            </div>
         </div>
         <aside class="notes">Welcome and intro speak</aside>
       </section>
-      <section id='agenda'>
-        <h4>Agenda</h4>
-        <ol>
-          <li>Last talk - any questions?</li>
-          <li>Application state</li>
-          <li>Context</li>
-          <li>Component state</li>
-        </ol>
+      <section>
+        <div>
+          <h3>What is a hook?</h3>
+          <img src="materials/slide2_hook.jpeg" alt="Hook Image" style="width: 40%" />
+          <p>Any examples?</p>
+        </div>
+        <aside class="notes">Wiki: intercepting calls/events, middleware as pre/post hooks</aside>
       </section>
       <section>
-        <h4>Last talk - any questions?</h4>
+        <h3>Benefits of using hooks</h3>
       </section>
-      <section id='application-state'>
-        <section id="application-state-contents">
-          <h4><span id="title-4" class='fw-400
-              transition'>Application</span> State</h4>
-          <span id="line-4" class="line animate__animated"></span>
-          <span id="new-el-4" class="animate__animated">Shareable or global</span>
-          <ol>
-            <li>Definition</li>
-            <li>Why do we need it?</li>
-            <li>Different approaches</li>
-            <li>Examples</li>
-          </ol>
-        </section>
-        <section>
-          <p>Definition</p>
-        </section>
-        <section>
-          <p>Why do we need it?</p>
-        </section>
-        <section>
-          <p>Flux</p>
-          <p>MVC vs observer</p>
-          <a target="_blank" referrerpolicy="no-referrer"
-             href="https://facebook.github.io/flux/docs/in-depth-overview">Flux Architecture Overview</a>
-        </section>
-        <section id=flux-concept>
-          <p>
-            A React component under the Flux architecture <em>should not directly</em> modify any props passed to it,
-            but should be passed <em>callback functions</em> that create actions which are sent by the dispatcher to
-            modify the store.</p>
-          <p>The action is an object whose responsibility is to describe what has taken place</p>
-        </section>
-        <section id=different-approaches>
-          <h4>Different Approaches</h4>
-          <ol>
-            <li>Single store (Redux, Zustand?)</li>
-            <li>Multi store (mobx)</li>
-            <li>Atomic (Recoil, Jotai)</li>
-            <li>Complex (React Query, Apollo Client)</li>
-            <li>Custom made via observable (RxJS)</li>
-            <li>Context</li>
-          </ol>
-        </section>
-        <section>
-          <h4>Single Store - Redux</h4>
-        </section>
-        <section id='reudx'>
-          <h4>Single Store - Redux</h4>
-          <div class='two-column'>
-            <div class='column'>
-              <p>Pros</p>
-              <ul>
-                <li>Single source of truth</li>
-                <li>Reliable & predictable</li>
-                <li>Pure functions, easy to test</li>
-                <li>Long market life</li>
-              </ul>
-            </div>
-            <div class='column'>
-              <p>Const</p>
-              <ul>
-                <li>Limitation of data types</li>
-                <li>Speed</li>
-                <li>It is additional library(ies)</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-        <section id='redux-toolkit'>
-          <h4>Redux Toolkit</h4>
+      <section>
+        <h3>Hooks in React</h3>
+        <ul>
+          <li>Difference from regular functions</li>
+          <li>Types</li>
+          <li>Rules of hooks</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Difference from regular functions</h3>
+      </section>
+      <section>
+        <h3>Types of hooks</h3>
+        <div>
+          <p>Two types of hooks in React:</p>
           <ul>
-            <li>
-              Idiomatic, best practicies included
-            </li>
-            <li>
-              Direct reducers, without
-              switch/case
-            </li>
-            <li>
-              Immer library inside
-            </li>
-            <li>
-              Less boilerplate
-            </li>
-            <li>
-              Now includes Query API
-            </li>
-            <li>
-              It is still Redux inside
-            </li>
+            <li>built-in</li>
+            <li>custom</li>
           </ul>
+        </div>
+      </section>
+      <section>
+        <section>
+          <h3>Rules of hooks</h3>
+          <div><a href="https://reactjs.org/docs/hooks-rules.html">from React docs</a></div>
+          <ul>
+            <li>only call hooks at the top level</li>
+            <li>only call hooks from React functions</li>
+          </ul>
+          <div class='super m1 emphasize'>⬐ what docs say ⬎</div>
         </section>
-        <section data-markdown id='redux-example-1'>
-          <textarea data-template>
-              #### Single Store
-              Redux, using Redux Toolkit:
-
-              ```ts [1-16|2|3|5-6|8-9|14|16]
-                export const slice = createSlice({
-                  name: 'app',
-                  initialState: INITIAL_STATE,
-                  reducers: {
-                    setIsLoading: (state: AppState, action: Action<boolean>) => {
-                      state.isLoading = action.payload;
-                    },
-                    setData: (state: AppState, action: Action<string[]>) => {
-                      state.data = [...state.data, ...action.payload];
-                    },
-                  },
-                });
-
-                export const { setIsLoading, setData } = slice.actions;
-
-                export const appReducer = slice.reducer;
-              ```
-            </textarea>
-        </section>
-        <section data-markdown id='redux-example-1'>
-          <textarea data-template>
-              #### Single Store
-              Send event:
-              ```tsx [1-13|2|5]
-                export function ModuleOne() {
-                  const dispatch = useDispatch();
-
-                  function handleClick() {
-                    dispatch(setData(['button clicked']));
-                  }
-
-                  return (
-                    <div className={classes.container}>
-                      <button onClick={handleClick}>Send message</button>
-                    </div>
-                  );
-                }
-              ```
-            </textarea>
-        </section>
-        <section data-markdown id='redux-example-2'>
-          <textarea data-template>
-              #### Single Store
-              Subscribe to state or state changes:
-              ```tsx [1-13|2|12]
-                export function ModuleTwo() {
-                  const data = useSelector(getData);
-
-                  function renderData() {
-                    return (
-                    <p className='animate__animated animate__flipInX'>{data.join('. ')}</p>
-                    );
-                  }
-
-                  return (
-                    <div className={classes.container}>
-                      {Boolean(data.length) && renderData()}
-                    </div>
-                  );
-                }
-              ```
-            </textarea>
-        </section>
-        <section data-markdown id='redux-alt-use'>
-          <textarea data-template>
-              #### Alternative use
-              ```ts
-                import store from '../../../store'
-
-                const { getState, dispatch } = store
-
-                const slice = getState().app.isLoading
-
-                dispatch({ type: 'some', payload: 'payload'})
-              ```
-            </textarea>
-        </section>
-        <section id='single-store-1'>
-          <h4>Single Store</h4>
+        <section>
+          <h4>Only Call Hooks at the Top Level</h4>
+          <p><mark>Don’t call Hooks inside loops, conditions, or nested functions.</mark></p>
           <p>
-            As much logic as possible goes into actions, selectors and reducers:
+            Instead, always use Hooks at the top level of your React function, before any early returns. By following
+            this rule, you ensure that Hooks are called in the same order each time a component renders. That’s what
+            allows React to correctly preserve the state of Hooks between multiple useState and useEffect calls.
           </p>
         </section>
-        <section data-markdown id='single-store-2'>
-          <textarea data-template>
-              #### Single Store
-              Selector
-              ```ts
-                export const getSelectedItem = (state: State) =>
-                  state.items.find(
-                    item => item.id === state.selectedItemId);
-              ```
-            </textarea>
-        </section>
-        <section data-markdown id='single-store-3'>
-          <textarea data-template>
-              #### Single Store
-              Action
-              ```ts [1-15|1-7|10-12|14-15]
-                export const deletePicture =
-                  (picture_id: ID, meta?: ActionMeta): Action =>
-                    ({
-                      type: PicturesActions.DELETE,
-                      payload: picture_id,
-                      meta,
-                    });
-
-
-                function callback() {
-                  // do something
-                }
-
-                R.compose(dispatch, deletePicture)('xxxx', { callback })
-                // equal to: dispatch(deletePicture('xxxx', { callback }))
-              ```
-            </textarea>
-        </section>
-        <section data-markdown id='single-store-4'>
-          <textarea data-template>
-              #### Single Store
-              Reducer
-              ```ts
-                export const slice = createSlice({
-                  name: 'files',
-                  initialState: INITIAL_FILES_STATE,
-                  reducers: {
-                    clearState: _ => INITIAL_FILES_STATE;
-                    updateUploadsState: (state, action: PayloadAction<...>) => {
-                      // ...
-                    },
-                  },
-                });
-              ```
-            </textarea>
-        </section>
-        <section id='single-store-questions'>
-          Questions?
-        </section>
-        <section id='recoil'>
-          <h4>Atomic - Recoil</h4>
-        </section>
-        <section id='recoil-why-1'>
-          <h4>Why</h4>
-          <p>Large applications lead to large and complex state, which in turn affects store speed (complex objects to
-            compare) and lots of boilerplate code.</p>
+        <section>
+          <h4>Only Call Hooks from React Functions</h4>
+          <p>Don’t call Hooks from regular JavaScript functions. Instead, you can:</p>
           <ul>
-            <li>lots of boilerplate code</li>
-            <li>high complexity</li>
-            <li>speed</li>
+            <li>✅ Call Hooks from React function components.</li>
+            <li>✅ Call Hooks from custom Hooks (we’ll learn about them on the next page).</li>
           </ul>
         </section>
-        <section id='recoil-why-2'>
-          <h4>Why</h4>
-          <p>Recoil lets you create a data-flow graph that flows from atoms (shared state) through selectors (pure
-            functions) and down
-            into your React components. <em>Atoms</em> are units of state that components can subscribe to.
-            <em>Selectors</em> transform
-            this state either
-            synchronously or asynchronously.
+      </section>
+      <section>
+        <h3>Built-in React hooks</h3>
+        <div>
+          <ul>
+            <li><a href="#/9">useState</a></li>
+            <li><a href="#/10">useEffect</a></li>
+            <li><a href="#/11">useCallback</a></li>
+            <li><a href="#/12">useMemo</a></li>
+            <li><a href="#/13">useLayoutEffect</a></li>
+          </ul>
+        </div>
+        <aside class="notes"></aside>
+      </section>
+      <section>
+        <section>
+          <h3 class="no-uppercase">useState</h3>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            async vs sync way:
+            ```js [1-5]
+            const [state, setState] = useState(0)
+
+            setState(state+1)
+            // or
+            setState(state => state+=1)
+            ```
+          </textarea>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h3 class='no-uppercase'>useEffect vs useLayoutEffect</h3>
+          <p>
+            <b>useEffect</b> runs <em>after react renders your component</em> and ensures that your effect callback does
+            not block browser painting.
           </p>
         </section>
-        <section id='recoil-global' data-markdown>
-          <textarea data-template>
-              #### Global store
-              ```tsx [1-15|11,13]
-                import { StrictMode } from 'react';
-                import { RecoilRoot } from 'recoil';
-                import { createRoot } from 'react-dom/client';
-
-                import { App } from './app';
-
-                const root = createRoot(document.getElementById('root') as HTMLElement);
-
-                root.render(
-                  <StrictMode>
-                    <RecoilRoot>
-                      <App />
-                    </RecoilRoot>
-                  </StrictMode>
-                );
-              ```
-            </textarea>
+        <section>
+          <h3 class='no-uppercase'>useEffect vs useLayoutEffect</h3>
+          <p>
+            This differs from the behavior in class components where
+            <b>componentDidMount</b> and <b>componentDidUpdate</b> run synchronously
+            after rendering. It's more performant this way and most of the
+            time this is what you want. However, if your effect is mutating the
+            DOM (via a DOM node ref) and the DOM mutation will change the appearance
+            of the DOM node between the time that it is rendered and your effect
+            mutates it, then you don't want to use useEffect - <em>the user could see
+              a flicker when your DOM mutations take effect.</em>
+          </p>
         </section>
-        <section id='recoil_atom' data-markdown>
-          <textarea data-template>
-              #### Atom
-              ```tsx [1-12|6-12|7|8-11]
-                interface FormsState {
-                  isLoading: boolean;
-                  items: FormItem[]
-                }
-
-                export const formsState = atom<FormsState>({
-                  key: 'forms/items',
-                  default: {
-                    isLoading: false,
-                    items: [],
-                  },
-                });
-              ```
-            </textarea>
+        <section>
+          <h3 class='no-uppercase'>useEffect vs useLayoutEffect</h3>
+          <p>
+            <b>useLayoutEffect</b> runs synchronously <em>immediately after React has performed all DOM mutations</em>.
+            This can be useful if you need to make DOM measurements (like getting the scroll position or other styles
+            for an element) and then make DOM mutations or trigger a synchronous re-render by updating state.
+            <b>useLayoutEffect runs BEFORE useEffect</b>
+          </p>
         </section>
-        <section id="recoil-selector" data-markdown>
-          <textarea data-template>
-              #### Selector
-              ```tsx [1-20|2|3|4-19|6-9|18]
-                export const formsSelector = selector({
-                  key: 'forms/items/selector',
-                  get: ({ get }) => get(formsState),
-                  set: ({ set, get }, v) => {
-                    // if default state, use "as is"
-                    if (v instanceof DefaultValue) {
-                      set(formsState, v);
-                      return;
-                    }
-
-                    // ids of incoming forms
-                    const ids = v.items.map(f => f._id);
-
-                    // remove duplicates from existing state
-                    const current = get(formsState).items.filter(f => !ids.includes(f._id));
-
-                    current.push(...v.items);
-                    set(formsState, { ...v, items: current });
-                    },
-                });
-              ```
-            </textarea>
+      </section>
+      <section>
+        <section>
+          <h3 class="no-uppercase">useEffect</h3>
+          <p>
+            <b>useEffect</b> is not a lifecycle hook, it's a state sync tools - it synchronize side effects with
+            state, i.e. when a certain state changes, <b>useEffect</b> runs the side effects:
+          </p>
         </section>
-        <section id='recoil_consume' data-markdown>
+        <section>
+          <img src="materials/dan_mental_model.jpg" />
+        </section>
+        <section data-markdown>
           <textarea data-template>
-              #### Consume
-              ```tsx [1-13|1-2|4-5|7-8|10-11]
-                // like useState
-                const [forms, setForms] = useRecoilState(formsState);
-
-                // get value
-                const forms = useRecoilValue(formsSelector);
-
-                // reset to default
-                const closeModal = useResetRecoilState(modalIdSelector);
-
-                // setter only for value
-                const setForm = useSetRecoilState(selectedFormSelector);
+            ### Issues
+            Incorrect dependency array:
+            ```js [2|2,9|1-9]
+            useEffect(() => {
+              if (props.error) {
                 ...
-                etc.
-              ```
-            </textarea>
+
+                log.warn(props.message);
+              }
+            }, [props.message]);
+            ```
+          </textarea>
         </section>
-        <section id='custom-rxjs'>
-          <h4>Custom made via observable (RxJS)</h4>
-          <a target="_blank" referrerpolicy="no-referrer"
-             href="https://github.com/d-mv/ts-reactive-store/blob/develop/src/index.ts">
-            Reactive store example w/RxJS
-          </a>
-        </section>
-        <section id='global-context'>
-          <h4>Context</h4>
-          <p>Technically, Context is global and as such being used by many apps and libraries to keep data and
-            provide convenient way of working with it</p>
-        </section>
-        <section id='global-state-questions'>
-          Questions?
-        </section>
-      </section>
-      </section>
-      <section id='context-section'>
-        <section id='context-intro'>
-          <h4>Context</h4>
-          <quote>
-            <p>
-              <em>Context</em> is designed to share data that can be considered “global” for a tree of React components,
-              such as the current authenticated user, theme, or preferred language
-            </p>
-            <span>React documentation</span>
-          </quote>
-        </section>
-        <section id='context-linking'>
-          <h4>Context</h4>
-          <p>Being a part of React, <em>Context</em> allows to be used to link 3rd party state libraries to the
-            app:</h4>
-        </section>
-        <section>
-          <h4>Context</h4>
-          <p>Redux</p>
-          <img src="materials/context_redux.png" alt="Context Redux" />
-        </section>
-        <section>
-          <h4>Context</h4>
-          <p>Recoil</p>
-          <img src="materials/context_recoil.png" alt="Context Recoil" />
-        </section>
-        <section>
-          <h4>Context</h4>
-          <p>Individual blocks</p>
-          <img src="materials/context_individual_elements.png" alt="Context Individual" />
-        </section>
-        <section data-markdown id='context-example-1'>
+        <section data-markdown>
           <textarea data-template>
-              #### Context
-              Setting up context
-              ```tsx [1-7|5|7]
-                export interface EngineerContextType {
-                  engineer: DbEngineer;
+            ### Issues
+            Reacting to prop change to call callback in props - should be done in parent
+            ```js
+            export function Example({ value, callback }) {
+              useEffect(() => {
+                if (value) callback();
+              }, [value]);
+
+              return <></>;
+            }
+            ```
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ### Issues
+            should be:
+            ```js
+            export function Example() {
+              return <></>;
+            }
+            ```
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ### Issues
+            Reacting to changes of local state - perform action together with state change:
+            ```js [2|2,3-6|2,3-6,9|1-13]
+            export function Example({ initialValue, updateParent }) {
+              const [value, setValue] = useState(initialValue);
+
+              useEffect(() => {
+                if (value !== initialValue) updateParent(value);
+              }, [value]);
+
+              function handleChange(e) {
+                setValue(e.target.value);
+              }
+
+              return <input onChange={handleChange} value={value} />;
+            }
+            ```
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            # Issues
+            should be:
+            ```js [6,7|1-10]
+            export function Example({ initialValue, updateParent }) {
+
+              const [value, setValue] = useState(initialValue);
+
+              function handleChange(e) {
+                setValue(e.target.value);
+                updateParent(e.target.value);
+              }
+
+              return <input onChange={handleChange} value={value} />
+            }
+            ```
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ### Correct use #1
+            ```js [2-3|2-3,5-10|2-3,5-10,13|1-15]
+            const { store } = ...
+
+            useEffect(() => {
+              store.dispatch(...)
+              store.dispatch(...)
+
+              store.dispatch(...)
+
+              return () => {
+                store.dispatch(...);
+              };
+            }, []);
+            ```
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ### Correct use #2
+            ```js [6|6,9|1-11]
+            function handleKeys(e) {
+              // see slide about custom hooks
+            }
+
+            useEffect(() => {
+              globalThis.document.addEventListener('keydown', handleKeys);
+
+              return () => {
+                globalThis.document.removeEventListener('keydown', handleKeys);
+              };
+            }, []);
+            ```
+          </textarea>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h3 class='no-uppercase'>What is memoization?</h3>
+        </section>
+        <section>
+          <b>Memoization</b> or <b>memoisation</b> is an optimization technique used
+          primarily to speed up computer programs by storing the results of expensive
+          function calls and returning the <b>cached</b> result when the same inputs occur again.
+          </blockquote>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ### useCallback
+            ```js
+            const memoizedFn = useCallback((...args)=> {
+              // perform expensive calculations
+            }, [dependency])
+
+            const result = memoizedFn(arg1, arg2)
+            ```
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ### useMemo
+            ```js
+            const memoizedValue = useMemo(()=> {
+              // perform epxensive calculations
+              return value
+            },[dependency])
+
+            cosole.log(memoizedValue)
+            ```
+          </textarea>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h3>Custom hooks</h3>
+          <p>When the logic need to be abstracted, but access to context is required. Examples:</p>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ### useKeyPress
+            ```js [1-16|2-15|3-9|11|13-15]
+            export function useKeyPress({ onEnter, onEscape, onArrowDown, onArrowUp, onKey }) {
+              useEffect(() => {
+                function handleKeys(e) {
+                  if (e.key === 'Escape' && onEscape) onEscape(e);
+                  if (e.key === 'Enter' && !e.shiftKey && onEnter) onEnter(e);
+                  if (e.key === 'ArrowDown' && onArrowDown) onArrowDown(e);
+                  if (e.key === 'ArrowUp' && onArrowUp) onArrowUp(e);
+                  if (onKey) onKey(e.key);
                 }
 
-                export const EngineerContext = R.compose(createContext<EngineerContextType>, as<EngineerContextType>)({});
+                globalThis.document.addEventListener('keydown', handleKeys);
 
-                EngineerContext.displayName = 'EngineerContext';
-              ```
-            </textarea>
+                return () => {
+                  globalThis.document.removeEventListener('keydown', handleKeys);
+                };
+              }, [onEscape, onEnter, onArrowDown, onArrowUp, onKey]);
+            }
+            ```
+          </textarea>
         </section>
-        <section data-markdown id='context-example-1'>
+        <section data-markdown>
           <textarea data-template>
-              #### Context
-              Wrapping component
-              ```tsx [1-18|2|14|4-10|6,8|7]
-                export function Engineers() {
-                  const assignedEngineers = useSelector(getAssignedEngineers);
+            ### useWorkIsOverSprint
+            ```js [1-11|2|4|6|8|10|1-11]
+            export function useWorkIsOverSprint() {
+              const { work, assigned } = useContextSelector(WorkContext, c => c);
 
-                  function renderEngineer(engineer: DbEngineer) {
-                    return (
-                      <EngineerContext.Provider key={engineer._id} value={{ engineer }}>
-                        <Engineer />
-                      </EngineerContext.Provider>
-                    );
+              const sprint = useSelector(getCurrentSprint);
+
+              if (!assigned || !sprint) return false;
+
+              const endDate = assigned.startDate.add(work.estimate, 'days');
+
+              return endDate.isAfter(sprint.endDate, 'days');
+            }
+            ```
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ### useWorkDays
+            ```js
+            export function useWorkDays({ workToRender, engineer }: UseWorkDaysProps) {
+              const sprintDays = useSelector(getSprintDays);
+              const isDayOff = useSelector(getIsDayOff);
+
+              if (!workToRender || !engineer) return { days: [], lastDay: dayjs(), isOverSprint: false };
+
+              const { daysOff } = engineer;
+              const { work, startDate } = workToRender;
+
+              const days = sprintDays.map(day => {
+                const r = daysOff.find(d => d.isSame(day.date, 'date'));
+
+                if (!r) return day;
+
+                return { ...day, isOff: true };
+              });
+
+              let pointsLeft = work.estimate;
+              let lastDay = days[0];
+
+              const isOverSprint = false;
+
+              const shouldReturnDay = ({ date, isWeekend, isOff }: DbDate): boolean => {
+
+                if (!pointsLeft || isOff || isWeekend || isDayOff(date)) return true;
+
+                return false;
+              };
+
+              const mapper = (day: DbDate) => {
+                const { date } = day;
+
+                if (shouldReturnDay(day)) return day;
+
+                const isAlreadyFinished = startDate.add(pointsLeft, 'days').isBefore(date, 'date');
+
+                if (isAlreadyFinished) return day;
+
+                const isSameAsStart = date.isSame(startDate, 'date');
+                const isAfterStart = date.isAfter(startDate, 'date');
+
+                if (!isSameAsStart && !isAfterStart) return day;
+
+                if (isSameAsStart || (pointsLeft && isAfterStart)) {
+                  pointsLeft -= 1;
+
+                  if (!pointsLeft) lastDay = day;
+
+                  return { ...day, isWork: true };
                   }
 
-                  return (
-                    <div id='engineers' style={{ width: CONSTANTS.engineersWidth }}>
-                      {R.map(renderEngineer, assignedEngineers)}
-                      <EngineersPaneActions />
-                    </div>
-                  );
-                }
-              ```
-            </textarea>
-        </section>
-        <section data-markdown id='context-example-2'>
-          <textarea data-template>
-              #### Context
-              Consuming
-              ```tsx [1-5|2|4]
-                export function Engineer() {
-                  const engineer = useContextSelector(EngineerContext, c => c.engineer);
+                return day;
+              };
 
-                  return <div>{engineer.name}</div>
-                }
-              ```
-            </textarea>
+              const result = days.map(mapper);
+
+              return { days: result, lastDay, isOverSprint };
+            }
+            ```
+          </textarea>
         </section>
-        <section>
-          <h4>Context, Flux style</h4>
-          <p>In order to make global state with <em>Context</em> only using Flux architecture, we need to create
-            abstractions for <em>Context</em> and hooks <em>useDispatch</em>, <em>useSelector</em> and etc.</p>
-          <a target="_blank" referrerpolicy="no-referrer"
-             href="https://github.com/d-mv/sprint-planner/tree/develop/app/src/state">Example</a>
-        </section>
-        <section>
-          <h4>Context</h4>
-          <p><em>Context</em> allows to store functions and data of any complexity</p>
-          <a target="_blank" referrerpolicy="no-referrer"
-             href="https://github.com/d-mv/demo-form-builder/blob/develop/app/src/entities/modals/Modals.tsx">Example</a>
-        </section>
-        <section>
-          <h4>Context</h4>
-          <p>Downside of this flexibility - <strong>it triggers rerender on every change</strong></p>
-          <p>So, it's your responsbility to handle it</p>
-          <a target="_blank" referrerpolicy="no-referrer"
-             href="https://github.com/d-mv/sprint-planner/blob/c77a9750f7e56b86e640a258c6a6857e8275cce0/app/src/state/reducer.ts#L21">Example</a>
+        <section data-markdown>
+          <textarea data-template>
+            ### Usage
+            ```js
+            const isOverSprint = useWorkIsOverSprint();
+            //
+            const { days } = useWorkDays({ engineer, workToRender });
+            ```
+          </textarea>
         </section>
       </section>
-      <section id='component-state'>
-        <section>
-          <h4>Component state</h4>
-        </section>
-        <section>
-          <h4>Variable</h4>
-        </section>
-        <section>
-          <h4>useState</h4>
-        </section>
-        <section>
-          <h4>useRef</h4>
-        </section>
-      </section>
-      <section id='final-questions'>
-        Questions?
-      </section>
-      <section id='materials'>
-        <h4>Materials</h4>
+      <section>
+        <h3>Materials</h3>
         <ul>
           <li>
-            <a target="_blank" referrerpolicy="no-referrer" href="https://facebook.github.io/flux">Flux Architecture</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://17.reactjs.org/docs/hooks-intro.html">React
+              Docs // Hooks</a>
           </li>
           <li>
-            <div class='contents'>
-              <a target="_blank" referrerpolicy="no-referrer" href="https://redux.js.org">Redux</a>,
-              <a target="_blank" referrerpolicy="no-referrer" href="https://redux-toolkit.js.org">Redux
-                Toolkit</a>,
-              <a target="_blank" referrerpolicy="no-referrer" href="https://react-redux.js.org">React-Redux</a>,
-              <a target="_blank" referrerpolicy="no-referrer" href="https://redux.js.org/style-guide/">Redux Style
-                Guide</a>,
-              <a target="_blank" referrerpolicy="no-referrer" href="https://immerjs.github.io/immer">Immer</a>
-            </div>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://usehooks.com/" title="useHooks">"useHooks"
+              collection</a>
           </li>
           <li>
-            <a target="_blank" referrerpolicy="no-referrer" href="https://recoiljs.org">Recoil</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://epicreact.dev/myths-about-useeffect/">Myths
+              About useEffect</a>
+          </li>
+          <li><a target="_blank" referrerpolicy="no-referrer" href="https://www.youtube.com/watch?v=HPoC-k7Rxwo">Video:
+              Goodbye, useEffect: David Khourshid</a>
           </li>
           <li>
-            <div class='contents'>
-              <a target="_blank" referrerpolicy="no-referrer" href="https://reactjs.org">React</a>,
-              <a target="_blank" referrerpolicy="no-referrer" href="https://reactjs.org/docs/context.html">Context</a>
-            </div>
+            <a target="_blank" referrerpolicy="no-referrer"
+              href="https://julesblom.com/writing/react-hook-component-timeline">Timeline of a React Component With
+              Hooks</a>
           </li>
         </ul>
       </section>
-      <section id='end'>
-        <h3>THANK YOU!</h3>
+      <section>
+        <h3>p.s.</h3>
+      </section>
+      <section>
+        <div style="display:flex;flex-flow:column">
+          <h3 class='r-fit-text'>
+            <video class="r-stretch" height='600' controls src="materials/find_out.mp4" type="video/mp4"></video>
+          </h3>
+          <a target="_blank" referrerpolicy="no-referrer"
+            href="https://twitter.com/rogerskaer/status/1576025818182332416?s=19">link</a>
+        </div>
       </section>
     </div>
   </div>
