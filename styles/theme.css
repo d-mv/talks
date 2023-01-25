@@ -1,0 +1,146 @@
+:root {
+  /* colors */
+  --color-info-1: #006bdb;
+  --color-info-2: #438fdd;
+  --color-white: #fefefe;
+  --color-back: #fcfcfc;
+  --color-text: #444;
+  --color-secondary-1: #d9d9d9;
+  --color-secondary-2: #dedede;
+  --color-secondary-3: #ececec;
+  --color-secondary-4: #f7f7f7;
+  --color-secondary-5: #fdfdfd;
+  --color-primary-1: #686868;
+  --color-primary-2: #8e8e8e;
+  --color-primary-3: #b3b3b3;
+  --color-primary-4: #e1e1e1;
+  --color-primary-5: #f7f7f7;
+  --color-accent-1: #6fb632;
+  --color-accent-2: #94c76a;
+  --color-accent-4: #e2f0d7;
+  --color-error-1: #ea5558;
+  --color-warn-1: #f7cd37;
+  --color-dark-strip-1: rgba(0, 0, 0, 0.4);
+
+  /* animations */
+  --transition: all 0.112s ease-in-out;
+  --transition-slow: all 0.2s ease-in-out;
+
+  /* typography */
+  --font-family-sans: 'Open Sans', Helvetica, SegoeUI, sans-serif;
+  --font-family-code: JetBrains Mono, monospace
+
+  /* shadows */
+  --shadow-accent-2: 0 0.1rem 1rem 0 #94c76a44;
+  --shadow-primary-4: 0 0.1rem 1rem 0 #e1e1e144;
+  --shadow-1: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.08);
+  --shadow-2: 0 0.4rem 1rem rgba(0, 0, 0, 0.2);
+  --shadow_item_selection: rgba(0, 0, 0, 0.24) 0rem .3rem .8rem;
+  --shadow-white: rgb(255 255 255) 0.3rem 0.3rem 0.2rem;
+  --shadow-title-pink: rgb(189 147 249) 0.3rem 0.3rem 0.2rem;
+
+    font-size: 62.5%;
+  overflow: auto;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-white);
+}
+
+/* overload of the theme */
+:root {
+  --r-heading-font-weight: 700 !important;
+  --r-heading2-size: 7rem;
+  --r-main-font: 'Open Sans', sans;
+  --r-heading-font: 'JetBrains Mono', sans;
+}
+
+/* code snippet formatting */
+.reveal p {
+  font-size: 2.4rem;
+  letter-spacing: .1rem;
+}
+
+.reveal pre {
+  width: fit-content;
+  max-width: 100%;
+  font-size: 1.6rem !important;
+  white-space: pre-wrap;
+}
+
+.reveal pre code {
+  letter-spacing: .05rem;
+}
+
+/* scroll bars */
+::-webkit-scrollbar {
+  width: 0.4rem;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-thumb {
+  border: 0.12rem solid #5e5e5e59;
+  border-radius: 3rem;
+  background-color: #44444480;
+}
+
+::-webkit-scrollbar-button {
+  background-color: yellow;
+}
+
+::-webkit-scrollbar-track-piece {
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-resizer {
+  background-color: blue;
+}
+
+/* quotes */
+quote {
+  border-left: .5rem solid var(--r-heading-color);
+  display: flex;
+  flex-flow: column;
+}
+
+quote p {
+  font-size: 3rem !important;
+  padding: 0 2rem;
+  font-weight: 300;
+}
+
+quote span {
+  font-size: 3rem !important;
+  width: 100%;
+  display: block;
+  text-align: right;
+}
+
+li {
+  margin-block-start: 1.5rem;
+  margin-inline-end: 1.5rem;
+}
+
+img {
+  border-radius: .5rem;
+}

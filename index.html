@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="styles/fonts.css" />
+  <link rel="stylesheet" href="dist/reset.css" />
+  <link rel="stylesheet" href="dist/reveal.css" />
+  <link rel="stylesheet" href="dist/theme/dracula.css" />
+  <link rel="stylesheet" href="plugin/highlight/atom.css" />
+  <link rel="stylesheet" href="styles/theme.css" />
+  <link rel="stylesheet" href="styles/custom.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <script id='keys'>
+    function processKeyDown (e) {
+      if (e.key === '1') {
+        const titleElement = document.getElementById('title');
+        const underlineElement = document.getElementById('line-1');
+        const stateElement = document.getElementById('state');
+
+        stateElement.style = 'transition: var(--transition);text-shadow: var(--shadow-white)';
+
+        setTimeout(() => {
+          underlineElement.style.display = 'flex';
+          underlineElement.classList.add('animate__slideInUp');
+        }, 500);
+      } else if (e.key === '4') {
+        const titleElement = document.getElementById('title-4');
+        const crossline = document.getElementById('line-4');
+        const newElement = document.getElementById('new-el-4');
+
+
+        setTimeout(() => {
+          crossline.style.display = 'flex';
+          crossline.classList.add('animate__zoomIn');
+        }, 500);
+
+        setTimeout(() => {
+          titleElement.style = 'transition: var(--transition);color: #ffffff80'
+          newElement.classList.add('animate__zoomIn');
+          newElement.style.display = 'flex';
+        }, 1200);
+      }
+    }
+
+    document.addEventListener('keydown', processKeyDown);
+  </script>
+  <style id='theme'>
+    /* individual styles, for this current talk */
+    #line-1 {
+      top: 8rem;
+      width: 20rem;
+      right: 0.2rem;
+    }
+
+    #line-4 {
+      top: 2.5rem;
+      left: 27rem;
+      width: 27rem;
+    }
+
+    #new-el-4 {
+      position: absolute;
+      top: -5rem;
+      left: 23rem;
+      font-weight: 600;
+      text-shadow: var(--shadow-title-pink);
+      display: none;
+    }
+  </style>
+  <title>Let's Talk About State</title>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <div class="title">
+          <div class="title-header">
+            <h2 id="title">Let's Talk About <span class="fw-400" id="state">State</span></h2>
+            <span id="line-1" class="line animate__animated"></span>
+          </div>
+          </br>
+          <h5 class="white">What types of state are available? Use cases and pros/cons</h5>
+          <div class="details">
+            <p class="p2 date">January 24, 2022</p>
+            <p class="p2 author">by Dmitry Melnikov</p>
+          </div>
+          <div class="one-four code">
+            <a target="_blank" href="http://localhost:8888?print-pdf">print version</a>
+          </div>
+        </div>
+        <aside class="notes">Welcome and intro speak</aside>
+      </section>
+      <section id='agenda'>
+        <h4>Agenda</h4>
+        <ol>
+          <li>Last talk - any questions?</li>
+          <li>Application state</li>
+          <li>Context</li>
+          <li>Component state</li>
+        </ol>
+      </section>
+      <section>
+        <h4>Last talk - any questions?</h4>
+      </section>
+      <section id='application-state'>
+        <section id="application-state-contents">
+          <h4><span id="title-4" class='fw-400
+              transition'>Application</span> State</h4>
+          <span id="line-4" class="line animate__animated"></span>
+          <span id="new-el-4" class="animate__animated">Shareable or global</span>
+          <ol>
+            <li>Definition</li>
+            <li>Why do we need it?</li>
+            <li>Different approaches</li>
+            <li>Examples</li>
+          </ol>
+        </section>
+        <section>
+          <p>Definition</p>
+        </section>
+        <section>
+          <p>Why do we need it?</p>
+        </section>
+        <section>
+          <p>Flux</p>
+          <p>MVC vs observer</p>
+          <a target="_blank" referrerpolicy="no-referrer"
+             href="https://facebook.github.io/flux/docs/in-depth-overview">Flux Architecture Overview</a>
+        </section>
+        <section id=flux-concept>
+          <p>
+            A React component under the Flux architecture <em>should not directly</em> modify any props passed to it,
+            but should be passed <em>callback functions</em> that create actions which are sent by the dispatcher to
+            modify the store.</p>
+          <p>The action is an object whose responsibility is to describe what has taken place</p>
+        </section>
+        <section id=different-approaches>
+          <h4>Different Approaches</h4>
+          <ol>
+            <li>Single store (Redux, Zustand?)</li>
+            <li>Multi store (mobx)</li>
+            <li>Atomic (Recoil, Jotai)</li>
+            <li>Complex (React Query, Apollo Client)</li>
+            <li>Custom made via observable (RxJS)</li>
+            <li>Context</li>
+          </ol>
+        </section>
+        <section>
+          <h4>Single Store - Redux</h4>
+        </section>
+        <section id='reudx'>
+          <h4>Single Store - Redux</h4>
+          <div class='two-column'>
+            <div class='column'>
+              <p>Pros</p>
+              <ul>
+                <li>Single source of truth</li>
+                <li>Reliable & predictable</li>
+                <li>Pure functions, easy to test</li>
+                <li>Long market life</li>
+              </ul>
+            </div>
+            <div class='column'>
+              <p>Const</p>
+              <ul>
+                <li>Limitation of data types</li>
+                <li>Speed</li>
+                <li>It is additional library(ies)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section id='redux-toolkit'>
+          <h4>Redux Toolkit</h4>
+          <ul>
+            <li>
+              Idiomatic, best practicies included
+            </li>
+            <li>
+              Direct reducers, without
+              switch/case
+            </li>
+            <li>
+              Immer library inside
+            </li>
+            <li>
+              Less boilerplate
+            </li>
+            <li>
+              Now includes Query API
+            </li>
+            <li>
+              It is still Redux inside
+            </li>
+          </ul>
+        </section>
+        <section data-markdown id='redux-example-1'>
+          <textarea data-template>
+              #### Single Store
+              Redux, using Redux Toolkit:
+
+              ```ts [1-16|2|3|5-6|8-9|14|16]
+                export const slice = createSlice({
+                  name: 'app',
+                  initialState: INITIAL_STATE,
+                  reducers: {
+                    setIsLoading: (state: AppState, action: Action<boolean>) => {
+                      state.isLoading = action.payload;
+                    },
+                    setData: (state: AppState, action: Action<string[]>) => {
+                      state.data = [...state.data, ...action.payload];
+                    },
+                  },
+                });
+
+                export const { setIsLoading, setData } = slice.actions;
+
+                export const appReducer = slice.reducer;
+              ```
+            </textarea>
+        </section>
+        <section data-markdown id='redux-example-1'>
+          <textarea data-template>
+              #### Single Store
+              Send event:
+              ```tsx [1-13|2|5]
+                export function ModuleOne() {
+                  const dispatch = useDispatch();
+
+                  function handleClick() {
+                    dispatch(setData(['button clicked']));
+                  }
+
+                  return (
+                    <div className={classes.container}>
+                      <button onClick={handleClick}>Send message</button>
+                    </div>
+                  );
+                }
+              ```
+            </textarea>
+        </section>
+        <section data-markdown id='redux-example-2'>
+          <textarea data-template>
+              #### Single Store
+              Subscribe to state or state changes:
+              ```tsx [1-13|2|12]
+                export function ModuleTwo() {
+                  const data = useSelector(getData);
+
+                  function renderData() {
+                    return (
+                    <p className='animate__animated animate__flipInX'>{data.join('. ')}</p>
+                    );
+                  }
+
+                  return (
+                    <div className={classes.container}>
+                      {Boolean(data.length) && renderData()}
+                    </div>
+                  );
+                }
+              ```
+            </textarea>
+        </section>
+        <section data-markdown id='redux-alt-use'>
+          <textarea data-template>
+              #### Alternative use
+              ```ts
+                import store from '../../../store'
+
+                const { getState, dispatch } = store
+
+                const slice = getState().app.isLoading
+
+                dispatch({ type: 'some', payload: 'payload'})
+              ```
+            </textarea>
+        </section>
+        <section id='single-store-1'>
+          <h4>Single Store</h4>
+          <p>
+            As much logic as possible goes into actions, selectors and reducers:
+          </p>
+        </section>
+        <section data-markdown id='single-store-2'>
+          <textarea data-template>
+              #### Single Store
+              Selector
+              ```ts
+                export const getSelectedItem = (state: State) =>
+                  state.items.find(
+                    item => item.id === state.selectedItemId);
+              ```
+            </textarea>
+        </section>
+        <section data-markdown id='single-store-3'>
+          <textarea data-template>
+              #### Single Store
+              Action
+              ```ts [1-15|1-7|10-12|14-15]
+                export const deletePicture =
+                  (picture_id: ID, meta?: ActionMeta): Action =>
+                    ({
+                      type: PicturesActions.DELETE,
+                      payload: picture_id,
+                      meta,
+                    });
+
+
+                function callback() {
+                  // do something
+                }
+
+                R.compose(dispatch, deletePicture)('xxxx', { callback })
+                // equal to: dispatch(deletePicture('xxxx', { callback }))
+              ```
+            </textarea>
+        </section>
+        <section data-markdown id='single-store-4'>
+          <textarea data-template>
+              #### Single Store
+              Reducer
+              ```ts
+                export const slice = createSlice({
+                  name: 'files',
+                  initialState: INITIAL_FILES_STATE,
+                  reducers: {
+                    clearState: _ => INITIAL_FILES_STATE;
+                    updateUploadsState: (state, action: PayloadAction<...>) => {
+                      // ...
+                    },
+                  },
+                });
+              ```
+            </textarea>
+        </section>
+        <section id='single-store-questions'>
+          Questions?
+        </section>
+        <section id='recoil'>
+          <h4>Atomic - Recoil</h4>
+        </section>
+        <section id='recoil-why-1'>
+          <h4>Why</h4>
+          <p>Large applications lead to large and complex state, which in turn affects store speed (complex objects to
+            compare) and lots of boilerplate code.</p>
+          <ul>
+            <li>lots of boilerplate code</li>
+            <li>high complexity</li>
+            <li>speed</li>
+          </ul>
+        </section>
+        <section id='recoil-why-2'>
+          <h4>Why</h4>
+          <p>Recoil lets you create a data-flow graph that flows from atoms (shared state) through selectors (pure
+            functions) and down
+            into your React components. <em>Atoms</em> are units of state that components can subscribe to.
+            <em>Selectors</em> transform
+            this state either
+            synchronously or asynchronously.
+          </p>
+        </section>
+        <section id='recoil-global' data-markdown>
+          <textarea data-template>
+              #### Global store
+              ```tsx [1-15|11,13]
+                import { StrictMode } from 'react';
+                import { RecoilRoot } from 'recoil';
+                import { createRoot } from 'react-dom/client';
+
+                import { App } from './app';
+
+                const root = createRoot(document.getElementById('root') as HTMLElement);
+
+                root.render(
+                  <StrictMode>
+                    <RecoilRoot>
+                      <App />
+                    </RecoilRoot>
+                  </StrictMode>
+                );
+              ```
+            </textarea>
+        </section>
+        <section id='recoil_atom' data-markdown>
+          <textarea data-template>
+              #### Atom
+              ```tsx [1-12|6-12|7|8-11]
+                interface FormsState {
+                  isLoading: boolean;
+                  items: FormItem[]
+                }
+
+                export const formsState = atom<FormsState>({
+                  key: 'forms/items',
+                  default: {
+                    isLoading: false,
+                    items: [],
+                  },
+                });
+              ```
+            </textarea>
+        </section>
+        <section id="recoil-selector" data-markdown>
+          <textarea data-template>
+              #### Selector
+              ```tsx [1-20|2|3|4-19|6-9|18]
+                export const formsSelector = selector({
+                  key: 'forms/items/selector',
+                  get: ({ get }) => get(formsState),
+                  set: ({ set, get }, v) => {
+                    // if default state, use "as is"
+                    if (v instanceof DefaultValue) {
+                      set(formsState, v);
+                      return;
+                    }
+
+                    // ids of incoming forms
+                    const ids = v.items.map(f => f._id);
+
+                    // remove duplicates from existing state
+                    const current = get(formsState).items.filter(f => !ids.includes(f._id));
+
+                    current.push(...v.items);
+                    set(formsState, { ...v, items: current });
+                    },
+                });
+              ```
+            </textarea>
+        </section>
+        <section id='recoil_consume' data-markdown>
+          <textarea data-template>
+              #### Consume
+              ```tsx [1-13|1-2|4-5|7-8|10-11]
+                // like useState
+                const [forms, setForms] = useRecoilState(formsState);
+
+                // get value
+                const forms = useRecoilValue(formsSelector);
+
+                // reset to default
+                const closeModal = useResetRecoilState(modalIdSelector);
+
+                // setter only for value
+                const setForm = useSetRecoilState(selectedFormSelector);
+                ...
+                etc.
+              ```
+            </textarea>
+        </section>
+        <section id='custom-rxjs'>
+          <h4>Custom made via observable (RxJS)</h4>
+          <a target="_blank" referrerpolicy="no-referrer"
+             href="https://github.com/d-mv/ts-reactive-store/blob/develop/src/index.ts">
+            Reactive store example w/RxJS
+          </a>
+        </section>
+        <section id='global-context'>
+          <h4>Context</h4>
+          <p>Technically, Context is global and as such being used by many apps and libraries to keep data and
+            provide convenient way of working with it</p>
+        </section>
+        <section id='global-state-questions'>
+          Questions?
+        </section>
+      </section>
+      </section>
+      <section id='context-section'>
+        <section id='context-intro'>
+          <h4>Context</h4>
+          <quote>
+            <p>
+              <em>Context</em> is designed to share data that can be considered “global” for a tree of React components,
+              such as the current authenticated user, theme, or preferred language
+            </p>
+            <span>React documentation</span>
+          </quote>
+        </section>
+        <section id='context-linking'>
+          <h4>Context</h4>
+          <p>Being a part of React, <em>Context</em> allows to be used to link 3rd party state libraries to the
+            app:</h4>
+        </section>
+        <section>
+          <h4>Context</h4>
+          <p>Redux</p>
+          <img src="materials/context_redux.png" alt="Context Redux" />
+        </section>
+        <section>
+          <h4>Context</h4>
+          <p>Recoil</p>
+          <img src="materials/context_recoil.png" alt="Context Recoil" />
+        </section>
+        <section>
+          <h4>Context</h4>
+          <p>Individual blocks</p>
+          <img src="materials/context_individual_elements.png" alt="Context Individual" />
+        </section>
+        <section data-markdown id='context-example-1'>
+          <textarea data-template>
+              #### Context
+              Setting up context
+              ```tsx [1-7|5|7]
+                export interface EngineerContextType {
+                  engineer: DbEngineer;
+                }
+
+                export const EngineerContext = R.compose(createContext<EngineerContextType>, as<EngineerContextType>)({});
+
+                EngineerContext.displayName = 'EngineerContext';
+              ```
+            </textarea>
+        </section>
+        <section data-markdown id='context-example-1'>
+          <textarea data-template>
+              #### Context
+              Wrapping component
+              ```tsx [1-18|2|14|4-10|6,8|7]
+                export function Engineers() {
+                  const assignedEngineers = useSelector(getAssignedEngineers);
+
+                  function renderEngineer(engineer: DbEngineer) {
+                    return (
+                      <EngineerContext.Provider key={engineer._id} value={{ engineer }}>
+                        <Engineer />
+                      </EngineerContext.Provider>
+                    );
+                  }
+
+                  return (
+                    <div id='engineers' style={{ width: CONSTANTS.engineersWidth }}>
+                      {R.map(renderEngineer, assignedEngineers)}
+                      <EngineersPaneActions />
+                    </div>
+                  );
+                }
+              ```
+            </textarea>
+        </section>
+        <section data-markdown id='context-example-2'>
+          <textarea data-template>
+              #### Context
+              Consuming
+              ```tsx [1-5|2|4]
+                export function Engineer() {
+                  const engineer = useContextSelector(EngineerContext, c => c.engineer);
+
+                  return <div>{engineer.name}</div>
+                }
+              ```
+            </textarea>
+        </section>
+        <section>
+          <h4>Context, Flux style</h4>
+          <p>In order to make global state with <em>Context</em> only using Flux architecture, we need to create
+            abstractions for <em>Context</em> and hooks <em>useDispatch</em>, <em>useSelector</em> and etc.</p>
+          <a target="_blank" referrerpolicy="no-referrer"
+             href="https://github.com/d-mv/sprint-planner/tree/develop/app/src/state">Example</a>
+        </section>
+        <section>
+          <h4>Context</h4>
+          <p><em>Context</em> allows to store functions and data of any complexity</p>
+          <a target="_blank" referrerpolicy="no-referrer"
+             href="https://github.com/d-mv/demo-form-builder/blob/develop/app/src/entities/modals/Modals.tsx">Example</a>
+        </section>
+        <section>
+          <h4>Context</h4>
+          <p>Downside of this flexibility - <strong>it triggers rerender on every change</strong></p>
+          <p>So, it's your responsbility to handle it</p>
+          <a target="_blank" referrerpolicy="no-referrer"
+             href="https://github.com/d-mv/sprint-planner/blob/c77a9750f7e56b86e640a258c6a6857e8275cce0/app/src/state/reducer.ts#L21">Example</a>
+        </section>
+      </section>
+      <section id='component-state'>
+        <section>
+          <h4>Component state</h4>
+        </section>
+        <section>
+          <h4>Variable</h4>
+        </section>
+        <section>
+          <h4>useState</h4>
+        </section>
+        <section>
+          <h4>useRef</h4>
+        </section>
+      </section>
+      <section id='final-questions'>
+        Questions?
+      </section>
+      <section id='materials'>
+        <h4>Materials</h4>
+        <ul>
+          <li>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://facebook.github.io/flux">Flux Architecture</a>
+          </li>
+          <li>
+            <div class='contents'>
+              <a target="_blank" referrerpolicy="no-referrer" href="https://redux.js.org">Redux</a>,
+              <a target="_blank" referrerpolicy="no-referrer" href="https://redux-toolkit.js.org">Redux
+                Toolkit</a>,
+              <a target="_blank" referrerpolicy="no-referrer" href="https://react-redux.js.org">React-Redux</a>,
+              <a target="_blank" referrerpolicy="no-referrer" href="https://redux.js.org/style-guide/">Redux Style
+                Guide</a>,
+              <a target="_blank" referrerpolicy="no-referrer" href="https://immerjs.github.io/immer">Immer</a>
+            </div>
+          </li>
+          <li>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://recoiljs.org">Recoil</a>
+          </li>
+          <li>
+            <div class='contents'>
+              <a target="_blank" referrerpolicy="no-referrer" href="https://reactjs.org">React</a>,
+              <a target="_blank" referrerpolicy="no-referrer" href="https://reactjs.org/docs/context.html">Context</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section id='end'>
+        <h3>THANK YOU!</h3>
+      </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+    });
+  </script>
+</body>
+
+</html>
