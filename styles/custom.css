@@ -1,3 +1,16 @@
+.hidden {
+  display: none;
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.white-shadow {
+  text-shadow: var(--shadow-white);
+}
+
 .title {
   display: flex;
   flex-flow: column;
