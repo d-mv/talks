@@ -71,6 +71,11 @@ body {
   letter-spacing: .1rem;
 }
 
+.reveal li {
+  font-size: 2.4rem;
+  letter-spacing: .1rem;
+}
+
 .reveal pre {
   width: fit-content;
   max-width: 100%;
@@ -80,6 +85,11 @@ body {
 
 .reveal pre code {
   letter-spacing: .05rem;
+}
+
+.reveal sup {
+  font-size: 1.2rem;
+  font-style: italic;
 }
 
 /* scroll bars */
@@ -144,3 +154,4 @@ li {
 img {
   border-radius: .5rem;
 }
+

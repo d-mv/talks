@@ -66,7 +66,7 @@
       display: none;
     }
   </style>
-  <title>Let's Talk About State</title>
+  <title>Talk about CSS + HTML</title>
 </head>
 
 <body>
@@ -79,10 +79,9 @@
           hidden" id="html-1">+ HTML</span></h2>
           </div>
           </br>
-          <h5 class="white">Let's speak about some frequent
-            issues we face</h5>
+          <h5 class="white">Part I. Let's cover some main concepts</h5>
           <div class="details">
-            <p class="p2 date">February 7, 2022</p>
+            <p class="p2 date">March 1, 2023</p>
             <p class="p2 author">by Dmitry Melnikov</p>
           </div>
           <div class="one-four code">
@@ -91,126 +90,302 @@
         </div>
         <aside class="notes">Welcome and intro speak</aside>
       </section>
-      <section data-markdown id='agenda-1'>
-        <textarea data-template>
-          #### Agenda
-          1. Last talk - any questions?
-          2. HTML - semantics, attributes
-          3. style attributes vs style tag vs link tag
-          4. Global styling vs local
-          5. CSS modules
-          6. BEM
-          7. Pre-processing
-          8. Post-processing
-          9. Specificity
-          10. Nesting and extension
-        </textarea>
+      <section id='agenda-1'>
+        <h4>Agenda</h4>
+        <ol>
+          <li>Last talk - any questions?</li>
+          <li>HTML - semantics, attributes</li>
+          <li>BEM</li>
+          <li>Pre-processing</li>
+          <li>Post-processing</li>
+          <li>Specificity</li>
+          <li>Global styling vs local</li>
+          <li>Style attributes vs style tag vs link tag</li>
+          <li>Be(st|tter) practicies</li>
+          <li>Flex vs Grid</li>
+        </ol>
       </section>
-      <section data-markdown id='agenda-2'>
-        <textarea data-template>
-          #### Agenda, part 2
-          1. Prefer individual styles to more global styling
-          2. flex
-          3. grid
-          4. @keyframe
-          5. Pseudo classes & pseudo elements
-          6. #fff vs #ffffff and .1rem vs 0.1rem
-          7. Color systems
-          8. Animation
-        </textarea>
-      </section>
+      <!-- <section data-markdown id='agenda-2'> -->
+      <!--   <textarea data-template> -->
+      <!--     #### Agenda, part 2 -->
+      <!--     4. @keyframe -->
+      <!--     5. Pseudo classes & pseudo elements -->
+      <!--     6. #fff vs #ffffff and .1rem vs 0.1rem -->
+      <!--     7. Color systems -->
+      <!--     8. Animation -->
+      <!--   </textarea> -->
+      <!-- </section> -->
       <section id='last_talk'>
         <h4>Last talk - any questions?</h4>
       </section>
       <section id='html'>
+
         <section id='html-1'>
-          <h4>HTML</h4>
+          <h4>HTML - semantics, attributes</h4>
           <p>Why do we need it?</p>
         </section>
-      </section>
 
-      <section id='attribute-vs-tags'>
-        <section id='attribute-vs-tags-1'>
-          <h4>Attaching styles to HTML</h4>
-          <p></p>
+        <section id='html-2'>
+          <h4>HTML - semantics, attributes</h4>
+          <ul>
+            <li>easier to understand</li>
+            <li>more readable for other developers</li>
+            <li>screen readers and browsers can interpret semantic HTML better</li>
+            <li>affects page's SEO (n/a)</li>
+          </ul>
         </section>
-      </section>
 
-      <section id='global-vs-local'>
-        <section id='global-vs-local-1'>
-          <h4>Global styling vs local</h4>
-          <p></p>
+        <section id='html-3'>
+          <h4>HTML - semantics, attributes</h4>
+          <p>Most importantly - HTML can do a lot for us without using JS:</p>
+          <ul>
+            <li>handle inputs, input validation & etc</li>
+            <li>choose appropriate image to render</li>
+            <li>handle videos</li>
+            <li>etc.</li>
+          </ul>
         </section>
-      </section>
 
-      <section id='global-vs-local'>
-        <section id='global-vs-local-1'>
-          <h4>Global styling vs local</h4>
-          <p></p>
+        <section id='html-4'>
+          <h4>HTML - semantics, attributes</h4>
+          <p>Example</p>
+            <img src='/materials/html_input_attr.jpg'/>
         </section>
-      </section>
 
-
-      <section id='css-modules'>
-        <section id='css-modules-1'>
-          <h4>CSS Modules</h4>
-          <p></p>
-        </section>
       </section>
 
       <section id='bem'>
         <section id='bem-1'>
           <h4>BEM</h4>
-          <p></p>
+          <p>
+            Invented by Yandex, block-element-modifier methodology is one (if not <em>the</em>) of the most widely used one.</p>
+          <ul>
+            <li>a way to name CSS classes</li>
+            <li>easy for anyone to understand BEM code, cause of the strict rules (also easier for you to write when you have a system)</li>
+          </ul>
+        </section>
+
+        <section data-markdown id='bem-2'>
+          <textarea data-template>
+              #### BEM
+              ```html
+                <ul class="menu">
+                  <li class="menu__item">
+                    <a class="menu__link">
+                      <span class="menu__text"></span>
+                    </a>
+                  </li>
+                </ul>
+              ```
+              ----
+              ```css
+              .menu {}
+              .menu__item {}
+              .menu__link {}
+              .menu__text {}
+              ```
+          </textarea>
+        </section>
+
+        <section id='bem-3'>
+          <h4>BEM</h4>
+          <p>Alternatives:</p>
+          <ul>
+              <li>OOCSS — Separating container and content with CSS “objects”</li>
+              <li>SMACSS — Style-guide to write your CSS with five categories for CSS rules</li>
+              <li>SUITCSS — Structured class names and meaningful hyphens</li>
+              <li>Atomic — Breaking down styles into atomic, or indivisible, pieces</li>
+          </ul>
         </section>
       </section>
 
       <section id='pre-processing'>
         <section id='pre-processing-1'>
           <h4>Pre-processing</h4>
-          <p>scss, less, styl</p>
+          <p>What is CSS pre-processing?</p>
         </section>
+
+        <section id='pre-processing-2'>
+          <h4>Pre-processing</h4>
+          <p>Pre-processor is an app, that is generating CSS from it's own language - SCSS, LESS, styl and etc.</p>
+          <p>Allows to use a more convenient syntax and functionality that's not available in CSS</p>
+          <em>👆 not true anymore</em>
+        </section>
+
+        <section id='pre-processing-3'>
+          <h4>Pre-processing</h4>
+          <p>Two main features that pre-processors provided - <strong>variables</strong> and
+          <strong>nesting</strong> are both vailable in modern CSS</p>
+          <ul>
+          <li>Variables are more powerful in vanilla CSS, as they are global. Define them once and
+          then redefine anywhere</li>
+          <li>Nesting - final syntax is natively supported by Chrome from v112 (Edge and
+          Opera - with flag) or with post-processing plugin elsewhere.</li>
+          </ul>
+        </section>
+
+        <section id='pre-processing-4'>
+          <h4>Pre-processing</h4>
+          <a target="_blank" referrerpolicy="no-referrer" href="https://d-dash.netlify.app/"><p>Demo</p></a>
+        </section>
+
       </section>
 
       <section id='post-processing'>
         <section id='post-processing-1'>
           <h4>Post-processing</h4>
-          <p>postcss</p>
+          <p>What is post-processing?</p>
+          <p>Whats the difference from <strong>pre</strong>-processing?</p>
+        </section>
+
+        <section id='post-processing-2'>
+          <h4>Post-processing</h4>
+          <img src='/materials/pre_post_css.jpg' />
+          <div><sup>from: www.hongkiat.com/blog/css-post-processors-tips-resources</sup></div>
+        </section>
+
+        <section id='post-processing-3'>
+          <h4>Post-processing</h4>
+          <p>Post-processing allows use of:</p>
+          <ul>
+            <li>CSS modules</li>
+            <li>features, that are not yet widely supported (like Babel for JavaScript)</li>
+            <li>minification</li>
+            <li>automatically setup vendor prefixes</li>
+            <li>etc</li>
+          </ul>
+        </section>
+        <section id='post-processing-4'>
+          <h4>Post-processing</h4>
+          <p>PostCSS utility can be exended with plugins</p>
+          <img src='/materials/postcss.jpg' />
         </section>
       </section>
 
       <section id='specificity'>
         <section id='specificity-1'>
           <h4>Specificity</h4>
-          <p></p>
+          <strong>DISCLAIMER</strong>
+          <p><em>This is one of two most complicated subjects in CSS</em></p>
+          <p>The Floats concept (floating elements) is considered to be the other one</p>
         </section>
+        <section id='specificity-2'>
+          <h4>Specificity</h4>
+          <p>Speicificity is a set of rules Cascading Stylesheets engine in a browser is using to define how
+          your element is <em>actually</em> going to look like if there are overlaping styles
+          defined</p>
+        </section>
+
+        <section id='specificity-3'>
+          <h4>Specificity</h4>
+          <img src='/materials/css_specificity_applied.jpg' />
+        </section>
+
+        <section id='specificity-4'>
+          <h4>Specificity</h4>
+          <img src='/materials/css_specificity_1.webp' />
+        </section>
+
+        <section id='specificity-5'>
+          <h4>Specificity</h4>
+          <img src='/materials/css_specificity_regular.webp' />
+        </section>
+
+        <section id='specificity-6'>
+          <h4>Specificity</h4>
+          <img src='/materials/css_specificity_not.webp' />
+        </section>
+
+        <section id='specificity-7'>
+          <h4>Specificity</h4>
+          <img src='/materials/css_specificity_style.webp' />
+        </section>
+
       </section>
 
-      <section id='nesting-extensions'>
-        <section id='nesting-extensions-1'>
-          <h4>Nesting & extension</h4>
-            <p>scss vs css</p>
-        </section>
+      <section id='global-vs-local-1'>
+        <h4>Global styling vs local</h4>
+        <p>What's the difference? When and where to use what?</p>
+        <sup>(if still a question - read materials for previous slides)</sup>
       </section>
 
-      <section id='individual-vs-global'>
-        <section id='individual-vs-global-1'>
-          <h4>Prefer individual styles to more global styling</h4>
-          <p></p>
-        </section>
+      <section id='attribute-vs-tags-1'>
+        <h4>Attaching styles to HTML</h4>
+        <ul>
+        <li><code>style</code> tag in <code>head</code> of the HTML page</li>
+        <li><code>link</code> in <code>head</code> of the HTML page</li>
+        <li>inline styling with <code>style</code> attribute</li>
+        </ul>
       </section>
 
-      <section id='flex'>
-        <section id='flex-1'>
-          <h4>flex</h4>
-          <p></p>
+      <section id='best-practicies'>
+
+        <section id='best-practicies-1'>
+          <h4>Be(st|tter) practicies</h4>
+          <p>While styling has been most of the state a matter of preference, nowdays certain
+          <em>ways</em> of doing it have been followed:</p>
         </section>
+
+        <section id='best-practicies-2'>
+          <h4>Be(st|tter) practicies</h4>
+          <ul>
+            <li>Prefer individual, local style -> <code>.Component__button_title</code></li>
+            <li>Avoid using tag selector -> a, p, div & etc</li>
+            <li>Use pre-processor (for faster development) and post-processor (to automate
+            production, compatibility features & etc)</li>
+            <li>Avoid overlaping classes</li>
+            <li>If there is a chance -> stick to <em>cheaper</em> styles</li>
+            <li style="text-decoration:underline">Avoid using JS where it's not need to reduce load on JS browser engine</li>
+          </ul>
+        </section>
+        
+        <section data-markdown id='best-practicies-3'>
+         <textarea data-template>
+          #### Be(st|tter) practicies</h4>
+          Some thing can't be done without JS. For example:
+          ```ts [1-13|7|10]
+            export function Image() {
+
+              const fileId = useMemo(...);
+
+              const { file } = useDownload(...);
+
+              const style =  backgroundImage: `url(${file})`, backgroundSize: 'cover'}
+
+              return (
+                <div style={style} />
+              );
+            }
+          ```
+          </textarea>
+        </section>
+
+        <section id='best-practicies-4'>
+          <h4>Be(st|tter) practicies</h4>
+          <p>This will look like this:</p>
+          <img style='width:25%' src='/materials/best_background_image.jpg'/>
+        </section>
+
       </section>
 
-      <section id='grid'>
-        <section id='grid-1'>
-          <h4>grid</h4>
-          <p></p>
+      <section id='flex-grid'>
+        <section id='flex-grid-1'>
+          <h4>Flex vs Grid</h4>
+          <p>Both concept are intended for layout of element. <strong>Flex</strong> is a purely responsive
+          concept. The <em>flexibility</em> of <strong>grid</strong> is that it can provide both fixed and
+          respobsive layout</p>
+          <p><em>Grid</em> is also the shortest way to center elements:</p>
+          <p><code>{ display: grid; place-items: center; }</code></p>
+        </section>
+        <section id='flex-grid-2'>
+          <h4>Flex vs Grid</h4>
+          <p>Demos:</p>
+          <div class='column'>
+            <a target="_blank" referrerpolicy="no-referrer"
+            href="https://yoksel.github.io/flex-cheatsheet"><p>Flex</p></a>
+            <a target="_blank" referrerpolicy="no-referrer"
+            href="https://learncssgrid.com/"><p>Grid</p></a>
+            </div>
         </section>
       </section>
 
@@ -247,28 +422,40 @@
 
       <section id='fff-vs-ffffff'>
         <section id='fff-vs-ffffff'>
-          <h4>#fff vs #ffffff and .1rem vs 0.1rem</h4>
-          <p></p>
+          <h4>Short vs long values</h4>
+          <p>#fff vs #ffffff and .1rem vs 0.1rem</p>
         </section>
       </section>
 
       <section id='color-systems'>
         <section id='color-systems-1'>
           <h4>Color systems</h4>
+https://css-tricks.com/nerds-guide-color-web/
+            https://www.joshwcomeau.com/css/color-formats/
           <p></p>
             <ul>
               <li>hex</li>
               <li>rgb(a)</li>
               <li>hsl(a)</li>
-              <li>defaults aka named</li>
+              <li>lch</li>
+              <li>defaults aka named colors</li>
               <li>currentColor</li>
             </ul>
         </section>
+          <section>
+            <div style="height:70vh;position:absolute;left:0;right:0;top:-4vh">
+              <h4>defaults aka named colors</h4>
+              <a target="_blank" referrerpolicy="no-referrer" href="materials/named_colors.jpg">
+                <img src="materials/named_colors.jpg"/>
+              </a>
+            </div>
+          </section>
       </section>
 
       <section id='animation'>
         <section id='animation-1'>
           <h4>Animation</h4>
+            https://codepen.io/jkantner/pen/xxJmMVa
           <p></p>
         </section>
       </section>
@@ -283,6 +470,31 @@
             <a target="_blank" referrerpolicy="no-referrer" href="https://facebook.github.io/flux">Flux
               Architecture</a>
           </li>
+
+            <!-- https://css-tricks.com/snippets/css/css-box-shadow/ -->
+<!--BEM-->
+<!-- https://getbem.com/ -->
+<!-- https://web.archive.org/web/20150602231126/https://clubmate.fi/oocss-acss-bem-smacss-what-are-they-what-should-i-use/ -->
+specificity
+
+https://blogs.windows.com/msedgedev/2023/01/17/the-truth-about-css-selector-performance/
+
+https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/
+https://www.smashingmagazine.com/2007/05/css-float-theory-things-you-should-know/
+
+flex
+            https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/
+
+            https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+https://web.dev/learn/css/flexbox/
+https://yoksel.github.io/flex-cheatsheet/
+
+            grid:
+            https://css-tricks.com/snippets/css/complete-guide-grid/
+            https://learncssgrid.com/
+            https://cssgrid-generator.netlify.app/
+            https://grid.layoutit.com/
+
         </ul>
       </section>
       <section id='end'>
