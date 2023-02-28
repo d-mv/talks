@@ -90,6 +90,11 @@
         </div>
         <aside class="notes">Welcome and intro speak</aside>
       </section>
+
+      <section id='last_talk'>
+        <h4>Last talk - any questions?</h4>
+      </section>
+
       <section id='agenda-1'>
         <h4>Agenda</h4>
         <ol>
@@ -104,9 +109,8 @@
           <li>Be(st|tter) practicies</li>
           <li>Flex vs Grid</li>
         </ol>
-      </section>
-      <section id='last_talk'>
-        <h4>Last talk - any questions?</h4>
+        <br>
+        <sup>to be continued...</sup>
       </section>
       <section id='html'>
 
@@ -139,7 +143,7 @@
         <section id='html-4'>
           <h4>HTML - semantics, attributes</h4>
           <p>Example</p>
-            <img src='/materials/html_input_attr.jpg'/>
+          <img src='/materials/html_input_attr.jpg'/>
         </section>
 
       </section>
@@ -207,10 +211,10 @@
           <p>Two main features that pre-processors provided - <strong>variables</strong> and
           <strong>nesting</strong> are both vailable in modern CSS</p>
           <ul>
-          <li>Variables are more powerful in vanilla CSS, as they are global. Define them once and
-          then redefine anywhere</li>
-          <li>Nesting - final syntax is natively supported by Chrome from v112 (Edge and
-          Opera - with flag) or with post-processing plugin elsewhere.</li>
+            <li>Variables are more powerful in vanilla CSS, as they are global. Define them once and
+            then redefine anywhere</li>
+            <li>Nesting - final syntax is natively supported by Chrome from v112 (Edge and
+            Opera - with flag) or with post-processing plugin elsewhere.</li>
           </ul>
         </section>
 
@@ -245,20 +249,24 @@
             <li>etc</li>
           </ul>
         </section>
+
         <section id='post-processing-4'>
           <h4>Post-processing</h4>
           <p>PostCSS utility can be exended with plugins</p>
           <img src='/materials/postcss.jpg' />
         </section>
+
       </section>
 
       <section id='specificity'>
+
         <section id='specificity-1'>
           <h4>Specificity</h4>
           <strong>DISCLAIMER</strong>
           <p><em>This is one of two most complicated subjects in CSS</em></p>
           <p>The Floats concept (floating elements) is considered to be the other one</p>
         </section>
+
         <section id='specificity-2'>
           <h4>Specificity</h4>
           <p>Speicificity is a set of rules Cascading Stylesheets engine in a browser is using to define how
@@ -302,9 +310,9 @@
       <section id='attribute-vs-tags-1'>
         <h4>Attaching styles to HTML</h4>
         <ul>
-        <li><code>style</code> tag in <code>head</code> of the HTML page</li>
-        <li><code>link</code> in <code>head</code> of the HTML page</li>
-        <li>inline styling with <code>style</code> attribute</li>
+          <li><code>style</code> tag in <code>head</code> of the HTML page</li>
+          <li><code>link</code> in <code>head</code> of the HTML page</li>
+          <li>inline styling with <code>style</code> attribute</li>
         </ul>
       </section>
 
@@ -382,39 +390,32 @@
       <section id='final-questions'>
         Questions?
       </section>
+
       <section id='materials'>
         <h4>Materials</h4>
-        <ul>
-          <li>
-            <a target="_blank" referrerpolicy="no-referrer" href="https://facebook.github.io/flux">Flux
-              Architecture</a>
-          </li>
-
-            <!-- https://css-tricks.com/snippets/css/css-box-shadow/ -->
-<!--BEM-->
-<!-- https://getbem.com/ -->
-<!-- https://web.archive.org/web/20150602231126/https://clubmate.fi/oocss-acss-bem-smacss-what-are-they-what-should-i-use/ -->
-specificity
-
-https://blogs.windows.com/msedgedev/2023/01/17/the-truth-about-css-selector-performance/
-
-https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/
-https://www.smashingmagazine.com/2007/05/css-float-theory-things-you-should-know/
-
-flex
-            https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/
-
-            https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-https://web.dev/learn/css/flexbox/
-https://yoksel.github.io/flex-cheatsheet/
-
-            grid:
-            https://css-tricks.com/snippets/css/complete-guide-grid/
-            https://learncssgrid.com/
-            https://cssgrid-generator.netlify.app/
-            https://grid.layoutit.com/
-
-        </ul>
+        <div class='two-column' style="white-space:nowrap;">
+          <div class='column'>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://getbem.com/">BEM</a>
+            <a
+ target="_blank" referrerpolicy="no-referrer" href="https://web.archive.org/web/20150602231126/https://clubmate.fi/oocss-acss-bem-smacss-what-are-they-what-should-i-use">Compare BEM against others</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://blogs.windows.com/msedgedev/2023/01/17/the-truth-about-css-selector-performance">CSS Selector Performance</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know">CSS Specificity</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://www.smashingmagazine.com/2007/05/css-float-theory-things-you-should-know">Float Theory</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox">Interactive Guide to Flexbox</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">A Guide to Flexbox</a>
+          </div>
+          <div class='column'>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://web.dev/learn/css/flexbox">Flexbox</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://yoksel.github.io/flex-cheatsheet">Flex Cheatsheet</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://css-tricks.com/snippets/css/complete-guide-grid">Complete Guide on
+            Grid</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://learncssgrid.com">Learn CSS Grid</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://cssgrid-generator.netlify.app">CSS Grid Generator</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://grid.layoutit.com">Grid Layout</a>
+            <a target="_blank" referrerpolicy="no-referrer" href="https://d-dash.netlify.app/">Demo
+            with a clock</a>
+          </div>
+        </div>
       </section>
       <section id='end'>
         <h3>THANK YOU!</h3>
